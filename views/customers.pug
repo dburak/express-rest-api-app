@@ -10,3 +10,8 @@ html(lang="en")
 
         h2 Customers
         p There are #{customers.length} orders waiting.
+
+        ol
+            each customer in customers
+                li
+                    a(href=`/customers/${customer.name}`) #{customer.name}

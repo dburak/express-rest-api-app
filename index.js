@@ -13,6 +13,14 @@ app.get('/customers', (req, res) => {
     res.render('customers', {customers})
 })
 
+app.get('/customers/:customerName', (req, res) => { 
+    const customer = customerDatabase.findByName(req.params.customerName);
+    
+    if(!customer) return res.status(404).send('Cannot find customer.')
+
+    res.render('customer', {customer});
+})
+
 app.get('/', (req, res) => {
     res.render('index');
 })
