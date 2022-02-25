@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Homepage
-    body
-        h1 Hi, Welcome to App
-        p With this app, you can order a meal that you want !
-
-        h2 Customer Detail
+extends layout
+block content
+    h2 Customer Detail
         p #{customer.name}
-
-                h3 Order History
+            h3 Order History
                 if customer.orders.length
                     ol
                         each order in customer.orders

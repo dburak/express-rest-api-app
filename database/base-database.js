@@ -38,9 +38,21 @@ class BaseDatabase {
         const objects = this.load();
     
         objects.splice(index, 1);
-        this.save(filename, objects);
+        this.save(filename, objects); 
     
     }
+
+    removeBy(name){
+        const objects = this.load();
+
+        const index = objects.findIndex(o => o.name == name);
+
+        if(index == -1) return (console.log(`Cannot find ${this.model.name}`))
+
+        objects.splice(index, 1);
+        this.save(objects);
+
+        }
 
     update(object){
 

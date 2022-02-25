@@ -1,5 +1,5 @@
 {
-  "name": "nodejs-oop-exercise",
+  "name": "express-rest-api-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,6 +12,7 @@
   "author": "Burak Diker <burakkddiker@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.2",
     "express": "^4.17.3",
     "flatted": "^3.2.5",
     "pug": "^3.0.2",

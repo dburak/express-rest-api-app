@@ -1,9 +1,12 @@
 const express = require('express')
 const {customerDatabase} = require('./database')
+const Customer = require('./customer')
 const flatted = require('flatted')
+const bodyParser = require('body-parser')
 
 
 const app = express()
+app.use(bodyParser.json())
 
 app.set('view engine', 'pug')
 
@@ -19,7 +22,26 @@ app.get('/customers/:customerName', (req, res) => {
     if(!customer) return res.status(404).send('Cannot find customer.')
 
     res.render('customer', {customer});
+    
 })
+
+app.post('/customers', (req, res) => {
+
+    const customer = Customer.create(req.body);
+
+    customerDatabase.insert(customer);
+
+
+    res.send(customer);
+
+})
+
+app.delete('/customers/:customerName', (req, res) => {
+    customerDatabase.removeBy(req.params.customerName);
+
+    res.send('OK');
+})
+
 
 app.get('/', (req, res) => {
     res.render('index');
